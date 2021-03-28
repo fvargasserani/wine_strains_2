@@ -1,0 +1,12 @@
+<div class='nested-fields'>   
+    <div class="field">
+    <%= f.label :magazine %> 
+    <select name="oenologist[magazine_id]">
+        <%= @magazines.each do |magazine| %>
+            <option value="<%= magazine.id %>">
+            <%= magazine.name %>
+            </option> 
+        <% end %> 
+    </select>
+</div>
+</div>

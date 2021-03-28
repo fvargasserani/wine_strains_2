@@ -1,0 +1,40 @@
+<h3>Wine:</h3>
+<%= form_with(model: wine, local: true) do |form| %>
+
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.number_field :year %>
+  </div>
+
+  <h3>Strains:</h3>
+  <div id='wine_strains'>
+    <%= form.fields_for :wines_strains do |wine_strain_form| %>
+      <%= render 'wine_strain_fields', :f => wine_strain_form %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'Add strain', form, :wine_strains %>
+    </div>
+  </div> 
+
+  <br>
+
+  <h3>Grades:</h3>
+  <div id='wine_oenologists'>
+    <%= form.fields_for :wines_oenologists do |wine_oenologist_form| %>
+      <%= render 'wine_oenologist_fields', :f => wine_oenologist_form %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'Add grade', form, :wine_oenologists %>
+    </div>
+  </div> 
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
