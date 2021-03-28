@@ -7,10 +7,11 @@ end
 
 RSpec.describe Strain, type: :model do
   it "should not be blank or nil" do
-    subject.name.should be_blank
-    subject.valid?
-    expect(page).not_to have_field('name', with: ' ')
-    expect(page).not_to have_field('name', with: nil)
-    expect(page).to have_field('name', with: 'Carmenere')
+    strain = Strain.create(name: ' ')
+    expect(strain).to_not be_valid
+    strain = Strain.create(name: nil)
+    expect(strain).to_not be_valid
+    strain = Strain.create(name: 'Carmenere')
+    expect(strain).to be_valid
   end
 end

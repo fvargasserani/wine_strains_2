@@ -5,6 +5,8 @@ RSpec.describe "Wines", type: :request do
   
   describe "GET #index" do
 
+    get :index
+
     it 'index shows wines' do
       expect(subject).to 
     end
@@ -17,6 +19,8 @@ RSpec.describe "Wines", type: :request do
 
   describe "GET #show" do
 
+    get :show
+    
     it "renders the show template" do
       expect(subject).to render_template("wines/show")
     end
