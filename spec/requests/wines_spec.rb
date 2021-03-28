@@ -4,14 +4,15 @@ require 'spec_helper'
 RSpec.describe "Wines", type: :request do
   
   describe "GET #index" do
-
-    get :index
+    subject { get :index }
 
     it 'index shows wines' do
-      expect(subject).to 
+      get :index
+      expect(subject).to be_successful
     end
     
     it "renders the index template" do
+      get :index
       expect(subject).to render_template("wines/index")
     end
 
@@ -19,9 +20,8 @@ RSpec.describe "Wines", type: :request do
 
   describe "GET #show" do
 
-    get :show
-    
     it "renders the show template" do
+      get :show
       expect(subject).to render_template("wines/show")
     end
 
